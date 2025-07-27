@@ -1,0 +1,16 @@
+{
+  "name": "PhiRedactor Dev",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:6.0",
+  "postCreateCommand": "dotnet restore && cd frontend && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    }
+  },
+  "forwardPorts": [5000, 5001, 3000],
+  "portsAttributes": {
+    "5000": { "label": "Backend API (HTTP)" },
+    "5001": { "label": "Backend API (HTTPS)" },
+    "3000": { "label": "React Frontend" }
+  }
+}
