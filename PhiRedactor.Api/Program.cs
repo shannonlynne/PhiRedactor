@@ -1,0 +1,49 @@
+using PhiRedactor.Application.Orchestrators;
+using PhiRedactor.Application.Orchestrators.Interfaces;
+using PhiRedactor.Application.Services;
+using PhiRedactor.Application.Services.Interfaces;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+string? allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Value;
+
+if (allowedOrigins is not null)
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowFrontend", policy =>
+        {
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+    });
+
+
+builder.Services.AddTransient<IRedactorOrchestrator, PhiRedactorOrchestrator>();
+builder.Services.AddTransient<IFileService, TextFileService>();
+builder.Services.AddTransient<IRegexService, PhiRegexService>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Logging.AddConsole();
+
+WebApplication app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+if (allowedOrigins is not null)
+    app.UseCors("AllowFrontend");
+
+//app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
