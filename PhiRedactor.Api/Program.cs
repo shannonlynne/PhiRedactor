@@ -29,6 +29,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Logging.AddConsole();
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5000);
+});
+
 WebApplication app = builder.Build();
 
 if (app.Environment.IsDevelopment())

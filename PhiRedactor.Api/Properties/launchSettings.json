@@ -1,12 +1,13 @@
 {
   "profiles": {
-    "PhiRedactor.Api": {
+    "YourAppName": {
       "commandName": "Project",
+      "dotnetRunMessages": true,
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:49833;http://localhost:49834"
+      }
     }
   }
 }
