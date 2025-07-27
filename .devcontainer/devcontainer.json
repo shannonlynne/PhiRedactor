@@ -12,5 +12,10 @@
     "5000": { "label": "Backend API (HTTP)" },
     "5001": { "label": "Backend API (HTTPS)" },
     "3000": { "label": "React Frontend" }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "19.1.0"
+    }
   }
 }
