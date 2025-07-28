@@ -5,7 +5,9 @@ using PhiRedactor.Application.Services.Interfaces;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-string? allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Value;
+string[]? allowedOrigins = builder.Configuration
+    .GetSection("AllowedOrigins")
+    .Get<string[]>();
 
 if (allowedOrigins is not null)
     builder.Services.AddCors(options =>
