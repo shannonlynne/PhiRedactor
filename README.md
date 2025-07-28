@@ -116,6 +116,8 @@ Separate Repos for Frontend & Backend
 
 ## Running the project Locally
 
+Note: I spent a ton of time trying to set up Github Codespace and did get it working. (I don't count that towards the project.) I just wanted to learn it. However, I had a friend who doesn't use any of these tools (Java dev) follow my instructions to set it up and he was unable to get it working so I omitted it. I know how to use it myself now and if I ever want to use it in the future, I will have more time to get proper instructions on how to use. If you know how to use it of course you can use that instead.
+
 Prerequisites:
 
 1. VS Code
@@ -168,14 +170,10 @@ It should open on its own
 
 Frontend: http://localhost:3000
 
-4. In the repo open the TestFiles folder. There are 4 files to test.
+4. In the repo open the TestFiles folder. See "frontend/TestFiles" for test filesThere are 4 files to test.
 
 ### Final Notes
 
 I did spend a bit more time on this than expected mostly because I took my time learning my way through the React project. React is still fairly new to me though Material UI and Axios helped keep things quite simple.
 
 I also triple-checked the project requirements and aimed to make the README as informative as possible.
-
-I probably spent more time wrangling Codespaces than anything else! I've never used it before, and while it’s a bit quirky, I had one file in the wrong place and it took a bit to realize it. However, I really don’t consider that part of the actual project. It was just something I wanted to learn for my own development. Now I know how it works, and what not to do. Unfortunately I had a friend run through steps to run it but since he is a Java dev and doesn't use most of these tools,
-
-See frontend/TestFiles for test files
