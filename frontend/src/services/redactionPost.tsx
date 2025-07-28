@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const apiUrl = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
-});
+    baseURL: process.env.REACT_APP_API_BASE_URL,
+})
 
 export default async function redactionPost(files: File[]) {
   const formData = new FormData();

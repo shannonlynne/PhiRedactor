@@ -43,8 +43,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     if (allowedOrigins is not null)
-    app.UseCors("AllowFrontend");
+        app.UseCors("AllowFrontend");
 }
+
+if (allowedOrigins is not null)
+    app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
 
