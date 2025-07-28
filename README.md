@@ -48,7 +48,7 @@ Order Details:
 
 In the backend, I use a class called PhiRegexService. Inside that, I defined several regular expressions that detect common PHI (Protected Health Information).
 
-Each regex is designed to match real-world formats as accurately as possible while minimizing false positives. The service processes line-by-line and supports both labeled and unlabeled data. If a label (like Name:) is detected, only the value is redacted, not the field name—preserving readability and context. For unlabeled data, full-line redaction will occur based on pattern matches.
+Each regex is designed to match real-world formats as accurately as possible while minimizing false positives. The service processes line-by-line and supports both labeled and unlabeled data. If a label (like Name:) is detected, only the value is redacted, not the field name. For unlabeled data, full-line redaction will occur based on pattern matches.
 
 The code loops through those patterns and swaps any matches with [REDACTED]. This is a very basic design but it is fast and readable. It’s not designed to cover all PHI or all file formats, but it works well for structured .txt files with field labels.
 
@@ -56,7 +56,7 @@ In the real world, this would a subset of what would need to be done for the the
 
 ### Assumptions
 
-Text files are structured and labeled (like Patient Name:) and will contain information that needs to be redacted
+Text files are structured and labeled (like "Patient Name: ") and will contain information that needs to be redacted
 
 Regex redaction and PHI provided in the sample text file is enough for this project
 
@@ -98,9 +98,9 @@ SQL Database for Metadata
 
 Authentication and Authorization with Azure AD
 
-Azure Key Vault for Configuration for secrets
+Azure Key Vault for secrets
 
-Unit Testing All Services
+Unit Testing of all Services
 
 Frontend Testing
 
@@ -122,9 +122,8 @@ Prerequisites:
 
 1. VS Code
 
-2. Install Node.js (v18+) installed
+2. Node.js (v18+)
    You can verify with "node -v" and "npm -v" in your terminal
-   Install Node.js.
    If it is not installed:
    Go to https://nodejs.org
    Download the LTS version (v18+)
@@ -147,30 +146,32 @@ https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 Steps:
 
 1. Clone the repo: https://github.com/shannonlynne/PhiRedactor
-   Code -> Clone and grab HTTPs link. Make sure you are in the top PhiRedactor folder.
+   "Code} (Local tab) -> "Clone" and grab HTTPs link.
 
 2. Install any recommended extensions but you don't need Docker or Prettier. A pop up in the bottom right will prompt you.
+
+\*Make sure you are in the top PhiRedactor folder in the explorer to view test files and output.
 
 3. Create a file called .env in the frontend (frontend/.env)
    Copy the example contents from .env.example but replace contents with:
    REACT_APP_API_BASE_URL=http://localhost:5000
 
-Open terminal:
-"cd .."
+Open a terminal
+"cd frontend"
+"npm install"
+"npm start"
+It should open the web page on its own
+
+Frontend: http://localhost:3000
+
+Open another terminal
 "cd ..PhiRedactor.Api"
 "dotnet run"
 
 Swagger: http://localhost:5000/swagger
 
-Open another terminal:
-"cd frontend"
-"npm install"
-"npm start"
-It should open on its own
-
-Frontend: http://localhost:3000
-
-4. In the repo open the TestFiles folder. See "frontend/TestFiles" for test filesThere are 4 files to test.
+4. At the root level there is a TestFiles folder. See "PhiRedactor/frontend/TestFiles". There are four files total. The empty file and DOCX file will get to the back end but neither will be redacted or saved.
+   \*React is set to only accept .txt files but by selecting all files (which someone might do), you can see and upload that DOCX file.
 
 ### Final Notes
 
