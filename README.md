@@ -66,6 +66,10 @@ Users have basic dev tools (or GitHub Codespaces access)
 
 CORS is needed only during development
 
+You know how to install and run everything but would like me to explain it like I would to someone who did not know
+
+You will use my test files to test. With limited scope, the files that befine with "ValidFile" are the files I used to build the Regex.
+
 ### Constraints/Limitations
 
 The four hour time limit
@@ -110,49 +114,14 @@ Support More File Structures
 
 Separate Repos for Frontend & Backend
 
-# Running the project
-
-## I have included 2 sets of directions. The easiest way is through Github Codespace but I also supplied directions for running it locally.
-
-### GitHub Codespaces
-
-Easiest Way to Run (One Click)
-
-Go to the repo and click the green "Code" butto
-Select "Open with Codespaces" → "New Codespace"
-
-After a few minutes, the app will be ready
-
-Navigate to the frontend/ folder
-Create a file called .env
-Copy the example contents from .env.example
-REACT_APP_API_BASE_URL=https://<your-codespace-name>-5000.app.github.dev
-(Replace <your-codespace-name> with your actual preview URL)
-
-Restart the frontend
-"cd frontend" then
-"npm start"
-
-"Ctrl-Shift-P", Run Task in Command Palette then Run Both (Frontend + Backend)
-
-Make Backend Port Public - a popup should come up in the bottom right and there will be an option to “Make Public” but you can also change it in the Ports tab in the bottom panel where the Terminal is located.
-Right-click port 5000, choose Port Visibility -> Public
-\*Without this, CORS will fail and the app won’t work!
-
-In the bottom right it should prompt you to open the browser on 3000 but if not, here are the links for the front end and swagger if you want to test there.
-
-Frontend: https://<your-codespace>-3000.app.github.dev
-
-Backend: https://<your-codespace>-5000.app.github.dev/swagger
-
-### Run Locally
-
-You can also run the app on your machine.
+## Running the project Locally
 
 Prerequisites:
 
-1. Install Node.js (v18+) installed
-   You can verify with node -v and npm -v in your terminal
+1. VS Code
+
+2. Install Node.js (v18+) installed
+   You can verify with "node -v" and "npm -v" in your terminal
    Install Node.js.
    If it is not installed:
    Go to https://nodejs.org
@@ -162,26 +131,44 @@ Prerequisites:
    "node -v"
    "npm -v"
    If node or npm aren’t recognized, you may need to restart your terminal or add Node to your PATH manually.
+   Go to system or user environment variables, go to Path, "Browse", C:\Program Files\nodejs\.
 
-2. NET SDK 6, 8, or 9 (any one of these is fine — tested on 6.0.428)
+3. NET SDK 6, 8, or 9 (any one of these is fine — tested on 6.0.428)
    Verify with "dotnet --version"
+   If you get this error "No .NET SDKs were found."
+   Follow the instructions:
+   Install the [6.0.428] .NET SDK
 
-3. VS Code (or Visual Studio 2022+ if preferred)
+Download a .NET SDK:
+https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
-Create a file called .env in the frontend (frontend/.env)
-Copy the example contents from .env.example but replace contents with:
-REACT_APP_API_BASE_URLL=http://localhost:5000
+Steps:
+
+1. Clone the repo: https://github.com/shannonlynne/PhiRedactor
+   Code -> Clone and grab HTTPs link. Make sure you are in the top PhiRedactor folder.
+
+2. Install any recommended extensions but you don't need Docker or Prettier. A pop up in the bottom right will prompt you.
+
+3. Create a file called .env in the frontend (frontend/.env)
+   Copy the example contents from .env.example but replace contents with:
+   REACT_APP_API_BASE_URL=http://localhost:5000
+
 Open terminal:
-"cd PhiRedactor.Api"
-dotnet run
+"cd .."
+"cd ..PhiRedactor.Api"
+"dotnet run"
+
+Swagger: http://localhost:5000/swagger
+
 Open another terminal:
 "cd frontend"
 "npm install"
 "npm start"
+It should open on its own
 
 Frontend: http://localhost:3000
 
-Backend: http://localhost:5000/swagger
+4. In the repo open the TestFiles folder. There are 4 files to test.
 
 ### Final Notes
 
@@ -189,4 +176,6 @@ I did spend a bit more time on this than expected mostly because I took my time 
 
 I also triple-checked the project requirements and aimed to make the README as informative as possible.
 
-I probably spent more time wrangling Codespaces than anything else! I've never used it before, and while it’s a bit quirky, I had one file in the wrong place and it took a bit to realize it. However, I really don’t consider that part of the actual project. It was just something I wanted to learn for my own development. Now I know how it works, and what not to do.
+I probably spent more time wrangling Codespaces than anything else! I've never used it before, and while it’s a bit quirky, I had one file in the wrong place and it took a bit to realize it. However, I really don’t consider that part of the actual project. It was just something I wanted to learn for my own development. Now I know how it works, and what not to do. Unfortunately I had a friend run through steps to run it but since he is a Java dev and doesn't use most of these tools,
+
+See frontend/TestFiles for test files
