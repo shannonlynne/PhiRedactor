@@ -4,7 +4,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "https://glorious-train-7v7w9jxjjgjfpq5j-5000.app.github.dev/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
