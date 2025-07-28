@@ -44,9 +44,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 if (allowedOrigins is not null)
     app.UseCors("AllowFrontend");
+
+app.UseHttpsRedirection();
 
 //app.UseAuthentication();
 app.UseAuthorization();
