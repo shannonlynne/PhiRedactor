@@ -14,4 +14,10 @@
     <ProjectReference Include="..\PhiRedactor.Application\PhiRedactor.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+  <None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
+
 </Project>
