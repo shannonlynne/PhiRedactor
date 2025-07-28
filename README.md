@@ -48,9 +48,9 @@ Order Details:
 
 In the backend, I use a class called PhiRegexService. Inside that, I defined several regular expressions that detect common PHI (Protected Health Information).
 
-Each regex is designed to match real-world formats as accurately as possible while minimizing false positives. The service processes line-by-line and supports both labeled and unlabeled data. If a label (like Name:) is detected, only the value is redacted, not the field name. For unlabeled data, full-line redaction will occur based on pattern matches.
+Each regex is designed the sample format as accurately as possible while minimizing false positives. The service processes line-by-line and supports both labeled and unlabeled data. If a label (like "Name:") is detected, only the value is redacted, not the field name. For unlabeled data, full-line redaction will occur based on pattern matches.
 
-The code loops through those patterns and swaps any matches with [REDACTED]. This is a very basic design but it is fast and readable. It’s not designed to cover all PHI or all file formats, but it works well for structured .txt files with field labels.
+The code loops through those patterns and swaps any matches with [REDACTED]. This is a very basic design but it is fast and readable. It’s not designed to cover other known PHI or all file formats, but it works well for structured .txt files with field labels followed by a colon.
 
 In the real world, this would a subset of what would need to be done for the the different file formats and setup. This is where I drew the line due to time constraints.
 
@@ -68,7 +68,7 @@ CORS is needed only during development
 
 You know how to install and run everything but would like me to explain it like I would to someone who did not know
 
-You will use my test files to test. With limited scope, the files that befine with "ValidFile" are the files I used to build the Regex.
+You will use my test files to test. With limited scope, the files that begin with "ValidFile" are the files I used to build the Regex.
 
 ### Constraints/Limitations
 
@@ -116,7 +116,7 @@ Separate Repos for Frontend & Backend
 
 ## Running the project Locally
 
-Note: I spent a ton of time trying to set up Github Codespace and did get it working. (I don't count that towards the project.) I just wanted to learn it. However, I had a friend who doesn't use any of these tools (Java dev) follow my instructions to set it up and he was unable to get it working so I omitted it. I know how to use it myself now and if I ever want to use it in the future, I will have more time to get proper instructions on how to use. If you know how to use it of course you can use that instead.
+Note: I spent a ton of time trying to set up Github Codespace and did get it working. (I don't count that towards the project. I just wanted to learn it.) However, I had a friend who doesn't use any of these tools (Java dev) follow my instructions to set it up and he was unable to get it working so I omitted it. I know how to use it myself now and if I ever want to use it in the future, I will have more time to get proper instructions on how to use. If you know how to use it of course you can use that instead.
 
 Prerequisites:
 
@@ -136,25 +136,23 @@ Prerequisites:
 
 3. NET SDK 6, 8, or 9 (any one of these is fine — tested on 6.0.428)
    Verify with "dotnet --version"
-   If you get this error "No .NET SDKs were found."
-   Follow the instructions:
-   Install the [6.0.428] .NET SDK
-
-Download a .NET SDK:
-https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+   If you get this error "No .NET SDKs were found.
+   Download a .NET SDK:
+   https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
 Steps:
 
 1. Clone the repo: https://github.com/shannonlynne/PhiRedactor
-   "Code} (Local tab) -> "Clone" and grab HTTPs link.
+   "Code"(Local tab) -> "Clone" and grab HTTPs link.
 
 2. Install any recommended extensions but you don't need Docker or Prettier. A pop up in the bottom right will prompt you.
 
 \*Make sure you are in the top PhiRedactor folder in the explorer to view test files and output.
 
-3. Create a file called .env in the frontend (frontend/.env)
+3. Create a file called .env in the frontend (frontend/.env):
    Copy the example contents from .env.example but replace contents with:
    REACT_APP_API_BASE_URL=http://localhost:5000
+   and rename it to .env.
 
 Open a terminal
 "cd frontend"
@@ -172,6 +170,8 @@ Swagger: http://localhost:5000/swagger
 
 4. At the root level there is a TestFiles folder. See "PhiRedactor/frontend/TestFiles". There are four files total. The empty file and DOCX file will get to the back end but neither will be redacted or saved.
    \*React is set to only accept .txt files but by selecting all files (which someone might do), you can see and upload that DOCX file.
+   The redacted files will be at the route
+   "/PhiRedactor/Output"
 
 ### Final Notes
 
